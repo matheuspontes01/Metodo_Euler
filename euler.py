@@ -48,4 +48,6 @@ plt.ylabel('y')
 plt.title('Método de Euler')
 plt.legend()
 plt.grid(True)
+plt.savefig("grafico_euler.png", dpi=300, bbox_inches='tight')
+
 plt.show()
