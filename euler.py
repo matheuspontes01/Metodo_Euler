@@ -4,9 +4,12 @@ import matplotlib.pyplot as plt
 # Função f(x, y) do PVI -> y' = f(x, y)
 def f(x, y):
     # Exemplo: y' = x + y
+    #y′=xe−y= x * np.exp(-y)
+    #y′=sin(x)+y2= np.sin(x) + y**2
+
     return x + y
 
-# Condições iniciais (y(0) = 2)
+# Condições iniciais (y(0) = 1)
 x0 = 0.0 # ponto inicial
 y0 = 1.0 # valor inicial
 
@@ -14,7 +17,7 @@ y0 = 1.0 # valor inicial
 a = 0.0 # inicio do intervalo
 b = 1.0 # fim do intervalo
 
-h = 0.1       # número de subdivisões
+h = 0.1  # número de subdivisões
 
 m = int((b - a) / h)  # número de subintervalos
 
@@ -25,14 +28,13 @@ y = np.zeros(m + 1)
 # Valores iniciais
 x[0], y[0] = x0, y0
 
-# Método de Euler
+# Método de Euler yi+1​=yi​+h⋅f(xi​,yi​)
 for i in range(m):
     y[i + 1] = y[i] + h * f(x[i], y[i]) # Utilizando a formula fundamental do método de Euler para calcular
     x[i + 1] = x[i] + h
 
 # solução exata: y(x) = x + 1 + e^{-x}
 y_exact = 2*np.exp(x) - x - 1
-errors = np.abs(y_exact - y)
 
 # Exibição da tabela
 print(" i |   x_i  |  y_i (Euler)  |  y(x_i) exato")
